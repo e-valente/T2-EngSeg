@@ -60,7 +60,6 @@ int main(int argc, char *argv[])
 
 		}
 
-
 		//nao esqueca de dar fclose
 		//em todos arquivos qdo chegar aqui
 
