@@ -135,6 +135,13 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 	 */
 
 	fp_out = fopen(filename_out, "wb");
+	if(!fp_out)
+	{
+		perror("Input error!\n");
+		exit(1);
+
+
+	}
 
 	fwrite(enc_vec, sizeof(unsigned char), nchars, fp_out);
 
@@ -182,8 +189,8 @@ int chaos_dec(char *filename_in, char *filename_out, char *filename_key)
 	//gerado pela senha
 	//gerado pela senha
 	fp_key = fopen(filename_key, "r");
-	if(!fp_in){
-		perror("Input error!\n");
+	if(!fp_key){
+		perror("Input error!");
 		exit(1);
 
 	}
@@ -300,6 +307,13 @@ int chaos_genkey(char *filename_key, int seed)
 
 
 	fp_out = fopen(filename_key, "w");
+	if(!fp_out)
+	{
+		perror("Input error!");
+		exit(1);
+
+
+	}
 
 	for(i = 0; i < KEY_NBITS /8; i++)
 	{

@@ -2,6 +2,7 @@ all: clean handle_input.o algorithm1.o main.o compile
 
 compile:
 	gcc main.o algorithm1.o handle_input.o -o t2-engseg -g
+	javac Rc4.java
 main.o:
 	gcc -c main.c -g
 

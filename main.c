@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "handle_input.h"
 
@@ -77,11 +78,8 @@ int main(int argc, char *argv[])
 		{
 
 			//gera chave
-			fp_key = fopen(argv[3], "w");
 			seed = atoi(argv[4]);
-
-
-			fclose(fp_key);
+			chaos_genkey(filename_key, seed);
 		}
 
 
@@ -90,17 +88,33 @@ int main(int argc, char *argv[])
 		filename_in = argv[4];
 		filename_out = argv[5];
 
+		char * args[6];
+		args[0] = "/bin/java";
+		args[1] = "Rc4";
+		args[2] = filename_in;
+		args[3] = filename_out;
+		args[4] = filename_key;
+		args[5] = NULL;
+
+
+
 
 		//abre arquivos e entrada e saida
 		if(operation == 'E')
 		{
+
 			//encripta
+			execve("/bin/java", args, NULL);
+			printf("pronto..\n");
 
 		}
 
 		if(operation == 'D')
 		{
-			//desencripta
+			//encripta
+			execve("/bin/java", args, NULL);
+			printf("pronto..\n");
+
 
 		}
 
