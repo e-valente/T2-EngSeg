@@ -16,7 +16,6 @@
 
 int main(int argc, char *argv[])
 {
-	FILE *fp_in, *fp_out, *fp_key;
 	int algorithm, seed;
 	char operation;
 	char *filename_in, *filename_out, *filename_key;
@@ -47,8 +46,6 @@ int main(int argc, char *argv[])
 		}
 
 
-		//abre arquivos e entrada e saida
-
 		filename_in = argv[4];
 		filename_out = argv[5];
 
@@ -64,9 +61,6 @@ int main(int argc, char *argv[])
 			chaos_dec(filename_in, filename_out, filename_key);
 
 		}
-
-		//nao esqueca de dar fclose
-		//em todos arquivos qdo chegar aqui
 
 
 	}
@@ -102,10 +96,8 @@ int main(int argc, char *argv[])
 		//abre arquivos e entrada e saida
 		if(operation == 'E')
 		{
-
 			//encripta
 			execve("/bin/java", args, NULL);
-			printf("pronto..\n");
 
 		}
 
@@ -113,8 +105,6 @@ int main(int argc, char *argv[])
 		{
 			//encripta
 			execve("/bin/java", args, NULL);
-			printf("pronto..\n");
-
 
 		}
 
