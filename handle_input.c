@@ -50,7 +50,7 @@ void handleInput(int argc, char **argv)
 void printOutputAndExit(char **argv)
 {
 
-	fprintf(stderr, "Invalid output!\n");
+	fprintf(stderr, "Invalid input!\n");
 	fprintf(stderr, "usage: \n%s <1 or 2> <D or E>"
 			" <key file> <input file> <output file>\nor\n", argv[0]);
 	fprintf(stderr, "%s <1 or 2> K <key file> <seed>\n", argv[0]);

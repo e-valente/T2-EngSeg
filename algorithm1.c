@@ -51,7 +51,7 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 
 	for(i = 0; i < KEY_NBITS /8; i++)
 	{
-		fscanf(fp_key, "%d", &keyvec[i]);
+		fscanf(fp_key, "%c", &keyvec[i]);
 	}
 
 
@@ -74,7 +74,6 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 	{
 		while(x < 0.1)x *= 10;
 	}
-	//printf("x0 vale %lf\n", x);
 
 
 	x0 = x;
@@ -100,7 +99,6 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 		x = 4 * x0 * (1 - x0);
 		x0 = x;
 		kvec[j] = ((int)(10000 * x)) % 256;
-		//printf("nchars = %d; %d = %d ", nchars, j, kvec[j]);
 
 	}
 
@@ -116,7 +114,6 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 		if(!feof(fp_in))
 		{
 			msg_vec[i] = n;
-			//printf("%d\n",n);
 			i++;
 		}
 	}
@@ -126,7 +123,6 @@ int chaos_enc(char *filename_in, char *filename_out, char *filename_key)
 	for(i = 0; i < nchars; i++)
 	{
 		enc_vec[i] = msg_vec[i] ^ kvec[i];
-		//printf("%d ", enc_vec[i]);
 	}
 
 
@@ -164,7 +160,6 @@ int chaos_dec(char *filename_in, char *filename_out, char *filename_key)
 	int i, j, nchars;
 	double x0, x;
 	FILE *fp_in, *fp_out, *fp_key;
-	char ch;
 	unsigned int n;
 	unsigned char keyvec[KEY_NBITS/8];
 	unsigned char *kvec, *msg_vec, *enc_vec;
@@ -197,7 +192,7 @@ int chaos_dec(char *filename_in, char *filename_out, char *filename_key)
 
 	for(i = 0; i < KEY_NBITS /8; i++)
 	{
-		fscanf(fp_key, "%d", &keyvec[i]);
+		fscanf(fp_key, "%c", &keyvec[i]);
 	}
 
 
@@ -296,7 +291,7 @@ int chaos_dec(char *filename_in, char *filename_out, char *filename_key)
 
 int chaos_genkey(char *filename_key, int seed)
 {
-	int j, i, n;
+	int i;
 	float x0, x;
 	FILE *fp_out;
 	unsigned char keyvec[KEY_NBITS/8];
